@@ -46,7 +46,7 @@ return {
   {
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
-    require('lazydev').setup {
+    require('dapui').setup {
       library = { 'nvim-dap-ui' },
     },
   },
