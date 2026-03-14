@@ -4,16 +4,17 @@
 -- See the kickstart.nvim README for more information
 return {
 
+  -- add this to the file where you setup your other plugins:
   {
-    'Exafunction/windsurf.vim',
+    "monkoose/neocodeium",
+    event = "VeryLazy",
     config = function()
-      -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      local neocodeium = require("neocodeium")
+      neocodeium.setup()
+      vim.keymap.set("i", "<A-f>", neocodeium.accept)
     end,
   },
+
   {
     'nvim-java/nvim-java',
     config = function()
@@ -33,7 +34,7 @@ return {
     config = function() require('lspsaga').setup {} end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-tree/nvim-web-devicons',     -- optional
     },
   },
   {
